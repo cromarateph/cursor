@@ -101,13 +101,16 @@ function chatconnect_pro_enqueue_assets() {
     ];
 
     wp_localize_script('chatconnect-pro-frontend', 'ChatConnectPro', $data);
+
+    // Ensure assets are actually printed on all frontend pages
+    if (!is_admin()) {
+        wp_enqueue_style('chatconnect-pro-frontend');
+        wp_enqueue_script('chatconnect-pro-frontend');
+    }
 }
 add_action('wp_enqueue_scripts', 'chatconnect_pro_enqueue_assets');
 
 function chatconnect_pro_admin_assets($hook) {
-    if ($hook !== 'settings_page_chatconnect-pro') {
-        return;
-    }
     wp_enqueue_style('wp-color-picker');
     wp_enqueue_style('chatconnect-pro-admin', CHATCONNECT_PRO_PLUGIN_URL . 'assets/css/admin.css', [], CHATCONNECT_PRO_VERSION);
     wp_enqueue_media();
