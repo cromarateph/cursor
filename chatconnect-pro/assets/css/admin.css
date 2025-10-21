@@ -1,4 +1,4 @@
 /* ChatConnect Pro Admin Styles */
 .chatconnect-admin .chatconnect-color-field { width: 120px; }
 .chatconnect-admin .chatconnect-media-field { display: flex; gap: 8px; align-items: center; }
-#chatconnect-test-result { font-weight: 600; }
+#chatconnect-test-result { font-weight: 600; margin-left: 8px; }

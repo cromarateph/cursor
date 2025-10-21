@@ -167,8 +167,9 @@ class ChatConnect_Admin_Settings {
         $id = esc_attr($args['id']);
         $val = esc_attr($this->get_value($id));
         echo '<div class="chatconnect-media-field">';
-        echo '<input type="text" id="' . $id . '" name="' . $this->option_name . '[' . $id . ']" value="' . $val . '" class="regular-text">';
-        echo ' <button class="button chatconnect-upload" data-target="' . $id . '">' . esc_html__('Upload', 'chatconnect-pro') . '</button>';
+        echo '<input type="text" id="' . $id . '" name="' . $this->option_name . '[' . $id . ']" value="' . $val . '" class="regular-text" placeholder="' . esc_attr__('Select or upload an image…', 'chatconnect-pro') . '">';
+        echo ' <button type="button" class="button chatconnect-upload" data-target="' . $id . '">' . esc_html__('Upload', 'chatconnect-pro') . '</button>';
+        echo ' <button type="button" class="button" onclick="document.getElementById(\'' . $id . '\').value=\'' . esc_js('') . '\'">' . esc_html__('Clear', 'chatconnect-pro') . '</button>';
         echo '</div>';
     }
 

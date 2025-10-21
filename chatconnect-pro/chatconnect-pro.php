@@ -68,7 +68,7 @@ add_action('plugins_loaded', 'chatconnect_pro_init');
 function chatconnect_pro_enqueue_assets() {
     // Frontend assets
     wp_register_style('chatconnect-pro-frontend', CHATCONNECT_PRO_PLUGIN_URL . 'assets/css/frontend.css', [], CHATCONNECT_PRO_VERSION);
-    wp_register_script('chatconnect-pro-frontend', CHATCONNECT_PRO_PLUGIN_URL . 'assets/js/chat-widget.js', ['wp-api-fetch'], CHATCONNECT_PRO_VERSION, true);
+    wp_register_script('chatconnect-pro-frontend', CHATCONNECT_PRO_PLUGIN_URL . 'assets/js/chat-widget.js', [], CHATCONNECT_PRO_VERSION, true);
 
     // Localize settings and nonces
     $options = get_option('chatconnect_pro_settings', []);
@@ -108,6 +108,7 @@ function chatconnect_pro_admin_assets($hook) {
     if ($hook !== 'settings_page_chatconnect-pro') {
         return;
     }
+    wp_enqueue_style('wp-color-picker');
     wp_enqueue_style('chatconnect-pro-admin', CHATCONNECT_PRO_PLUGIN_URL . 'assets/css/admin.css', [], CHATCONNECT_PRO_VERSION);
     wp_enqueue_media();
     wp_enqueue_script('chatconnect-pro-admin', CHATCONNECT_PRO_PLUGIN_URL . 'assets/js/admin-settings.js', ['jquery', 'wp-color-picker'], CHATCONNECT_PRO_VERSION, true);
