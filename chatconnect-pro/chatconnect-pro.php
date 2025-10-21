@@ -31,7 +31,10 @@ if (!defined('CHATCONNECT_PRO_PLUGIN_URL')) {
 // Autoload basic classes within includes
 spl_autoload_register(function ($class) {
     if (strpos($class, 'ChatConnect_') === 0) {
-        $file = CHATCONNECT_PRO_PLUGIN_DIR . 'includes/' . strtolower(str_replace('ChatConnect_', 'class-', $class)) . '.php';
+        $relative = str_replace('ChatConnect_', 'class-', $class);
+        // Convert underscores in class names to hyphens to match file naming
+        $relative = strtolower(str_replace('_', '-', $relative));
+        $file = CHATCONNECT_PRO_PLUGIN_DIR . 'includes/' . $relative . '.php';
         if (file_exists($file)) {
             require_once $file;
         }
